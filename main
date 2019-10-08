@@ -1,0 +1,58 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+	
+	public List<String> do001(List<String> list) {
+		return list.stream().map((it) -> it.substring(0, 1)).collect(Collectors.toList());
+	}
+	
+	public List<String> do002(List<String> list) {
+		return list.stream().filter((it) -> (it.length() % 2) == 0).collect(Collectors.toList());
+	}
+	public List<String> do003(List<String> list) {
+		return list.stream().map(String::toLowerCase).collect(Collectors.toList());
+	}
+}
+
+
+
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+class MainTest {
+	
+	@Test
+	void test() {
+		
+		Main main = new Main();
+		
+		List<String> input  = Arrays.asList("alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
+		List<String> oracle = Arrays.asList("a", "b", "c", "d", "e", "f");
+		
+		assertEquals(oracle, main.do001(input));
+		
+		oracle = Arrays.asList("echo");
+		
+		assertEquals(oracle, main.do002(input));
+		
+		input = Arrays.asList("The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
+		oracle = Arrays.asList("the", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
+		
+		assertEquals(oracle,main.do003(input));
+		
+		List<Integer> inputnumeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		List<Integer> oraclenumeros= Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		
+		assertEquals(oraclenumeros,inputnumeros);
+		
+	}
+
+}
